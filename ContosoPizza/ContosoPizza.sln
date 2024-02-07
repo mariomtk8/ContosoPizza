@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoPizza.Models", "Models\ContosoPizza.Models.csproj", "{09B7DB13-686B-4E54-AD30-EFEB3D29A7A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoPizza.Data", "Data\ContosoPizza.Data.csproj", "{8F3D13A9-6A24-4B02-87F2-3A5594522E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoPizza.Services", "Services\ContosoPizza.Services.csproj", "{89B3434A-673B-4D2C-A457-D1497DA98738}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoPizza.API", "API\ContosoPizza.API.csproj", "{2419FF25-CD78-4F15-B779-0FACFCF8F08A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09B7DB13-686B-4E54-AD30-EFEB3D29A7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B7DB13-686B-4E54-AD30-EFEB3D29A7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B7DB13-686B-4E54-AD30-EFEB3D29A7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B7DB13-686B-4E54-AD30-EFEB3D29A7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3D13A9-6A24-4B02-87F2-3A5594522E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3D13A9-6A24-4B02-87F2-3A5594522E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3D13A9-6A24-4B02-87F2-3A5594522E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3D13A9-6A24-4B02-87F2-3A5594522E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B3434A-673B-4D2C-A457-D1497DA98738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B3434A-673B-4D2C-A457-D1497DA98738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B3434A-673B-4D2C-A457-D1497DA98738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B3434A-673B-4D2C-A457-D1497DA98738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2419FF25-CD78-4F15-B779-0FACFCF8F08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2419FF25-CD78-4F15-B779-0FACFCF8F08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2419FF25-CD78-4F15-B779-0FACFCF8F08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2419FF25-CD78-4F15-B779-0FACFCF8F08A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
