@@ -1,39 +1,26 @@
 ﻿using ContosoPizza.Models;
 using ContosoPizza.Data;
+using TetePizza.Services;
 
-namespace ContosoPizza.Services;
-
-public class PizzaService
+namespace ContosoPizza.Services
 {
-    private readonly IPizzaData _pizzaData;
-
-    public PizzaService(IPizzaData pizzaData)
+    public class PizzaService : IPizzaServices
     {
-        _pizzaData = pizzaData;
-    }
+        private readonly IPizzaData _pizzaData; 
 
-    public List<Pizza> GetAll()
-    {
-        return _pizzaData.GetAll();
-    }
+        public PizzaService(IPizzaData pizzaData)
+        {
+            _pizzaData = pizzaData;
+        }
 
-    public Pizza Get(int id)
-    {
-        return _pizzaData.Get(id);
-    }
+        public List<Pizza> GetAll() => _pizzaData.GetAll();
 
-    public void Add(Pizza pizza)
-    {
-        _pizzaData.Add(pizza);
-    }
+        public Pizza? Get(int id) => _pizzaData.Get(id);
 
-    public void Delete(int id)
-    {
-        _pizzaData.Delete(id);
-    }
+        public void Add(Pizza pizza) => _pizzaData.Add(pizza);
 
-    public void Update(Pizza pizza)
-    {
-        _pizzaData.Update(pizza);
+        public void Delete(int id) => _pizzaData.Delete(id);
+
+        public void Update(Pizza pizza) => _pizzaData.Update(pizza);
     }
 }

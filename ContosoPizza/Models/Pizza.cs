@@ -1,12 +1,17 @@
-﻿namespace ContosoPizza.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace ContosoPizza.Models;
 
 public class Pizza
 {
+    public Pizza() { }
+
+    [Key]
     public int Id { get; set; }
+    [Required]
     public string? Name { get; set; }
-    public decimal Price {get; set;}
-    public bool IsGlutenFree { get; set; }
-    public List<Ingrediente> Ingredientes { get; set; } = new List<Ingrediente>();
+    [Required]
+    public decimal Price { get; set; }
+    [Required]
+    public List<Ingredientes> Ingredients { get; set; }
 
 }
-

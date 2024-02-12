@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Services\\ContosoPizza.Services.csproj": {}
+    "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Services\\ContosoPizza.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Data\\ContosoPizza.Data.csproj": {
+    "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Data\\ContosoPizza.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Data\\ContosoPizza.Data.csproj",
+        "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Data\\ContosoPizza.Data.csproj",
         "projectName": "ContosoPizza.Data",
-        "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Data\\ContosoPizza.Data.csproj",
+        "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Data\\ContosoPizza.Data.csproj",
         "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Data\\obj\\",
+        "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj": {
-                "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj"
+              "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj": {
+                "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj"
               }
             }
           }
@@ -48,6 +48,16 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
@@ -73,14 +83,14 @@
         }
       }
     },
-    "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj": {
+    "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
+        "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
         "projectName": "ContosoPizza.Models",
-        "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
+        "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
         "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\obj\\",
+        "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -132,14 +142,14 @@
         }
       }
     },
-    "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Services\\ContosoPizza.Services.csproj": {
+    "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Services\\ContosoPizza.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Services\\ContosoPizza.Services.csproj",
+        "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Services\\ContosoPizza.Services.csproj",
         "projectName": "ContosoPizza.Services",
-        "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Services\\ContosoPizza.Services.csproj",
+        "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Services\\ContosoPizza.Services.csproj",
         "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Services\\obj\\",
+        "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -160,11 +170,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Data\\ContosoPizza.Data.csproj": {
-                "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Data\\ContosoPizza.Data.csproj"
+              "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Data\\ContosoPizza.Data.csproj": {
+                "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Data\\ContosoPizza.Data.csproj"
               },
-              "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj": {
-                "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ada\\Casa\\PIzzaBD\\ContosoPizza\\Models\\ContosoPizza.Models.csproj"
+              "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj": {
+                "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj"
               }
             }
           }
