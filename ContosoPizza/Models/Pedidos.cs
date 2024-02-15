@@ -1,14 +1,15 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace ContosoPizza.Models;
 
-public class Pedidos
+namespace ContosoPizza.Models
 {
-    public Pedidos() { }
-    [Key]
-    public int IdOrder { get; set; }
-    public List<Pizza> Pizzas { get; set; } = new List<Pizza>();
-    public decimal Price { get; set; }
-    //[ForeignKey("Usuario")]
-    //public Usuario? User { get; set; }
+    public class Pedidos
+    {
+        [Key]
+        public int IdPedido { get; set; }
+
+        public List<PedidoPizza> PedidoPizzas { get; set; } = new List<PedidoPizza>();
+
+        public decimal Price { get; set; }
+    }
 }

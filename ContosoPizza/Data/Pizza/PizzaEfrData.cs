@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ContosoPizza.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ContosoPizza.Data
 {

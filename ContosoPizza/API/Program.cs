@@ -1,7 +1,5 @@
 using ContosoPizza.Services;
 using ContosoPizza.Data;
-using ContosoPizza.Models;
-using ContosoPizza.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

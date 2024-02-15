@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
+      "projectUniqueName": "c:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
       "projectName": "ContosoPizza.Models",
-      "projectPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
+      "projectPath": "c:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\ContosoPizza.Models.csproj",
       "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\obj\\",
+      "outputPath": "c:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,13 +69,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\S2-PC00\\Desktop\\ContosoPizza\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

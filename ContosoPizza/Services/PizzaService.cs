@@ -1,6 +1,6 @@
 ﻿using ContosoPizza.Models;
 using ContosoPizza.Data;
-using TetePizza.Services;
+using ContosoPizza.Services;
 
 namespace ContosoPizza.Services
 {

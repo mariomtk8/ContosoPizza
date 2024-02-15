@@ -1,6 +1,7 @@
 using ContosoPizza.Models;
 using ContosoPizza.Data;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ContosoPizza.Services
 {
@@ -27,10 +28,26 @@ namespace ContosoPizza.Services
         {
             var pedido = _pedidosData.Get(pedidoId);
 
-            if (pedido != null)
+            if (pedido != null && pizzas != null)
             {
-                pedido.Pizzas.AddRange(pizzas);
-                pedido.Price = pedido.Pizzas.Sum(p => p.Price);
+                // Asegúrate de que la colección PedidoPizzas no sea nula
+                pedido.PedidoPizzas ??= new List<PedidoPizza>();
+
+                foreach (var pizza in pizzas)
+                {
+                    // Añade cada pizza al pedido mediante la entidad intermedia PedidoPizza
+                    var pedidoPizza = new PedidoPizza
+                    {
+                        PedidoId = pedidoId,
+                        PizzaId = pizza.Id,
+                        // Opcionalmente, puedes añadir más propiedades si la entidad PedidoPizza las requiere
+                    };
+                    pedido.PedidoPizzas.Add(pedidoPizza);
+                }
+
+                // Recalcula el precio del pedido basado en las pizzas añadidas
+                pedido.Price += pizzas.Sum(p => p.Price);
+                
                 _pedidosData.Update(pedido);
             }
         }

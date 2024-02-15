@@ -1,6 +1,5 @@
-using System.Dynamic;
 using ContosoPizza.Models;
-
+using Microsoft.EntityFrameworkCore;
 namespace ContosoPizza.Data
 {
     public interface IIngredientesData

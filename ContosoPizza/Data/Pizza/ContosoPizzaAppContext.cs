@@ -1,55 +1,75 @@
 using Microsoft.EntityFrameworkCore;
 using ContosoPizza.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace ContosoPizza.Data
 {
     public class ContosoPizzaAppContext : DbContext
     {
-
         public ContosoPizzaAppContext(DbContextOptions<ContosoPizzaAppContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<Pizza> Pizzas { get; set; }
         public DbSet<Ingredientes> Ingredientes { get; set; }
         public DbSet<Pedidos> Pedidos { get; set; }
 
-        // public DbSet<Usuario> Usuarios { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<PedidoPizza>()
+                .HasKey(pp => new { pp.PedidoId, pp.PizzaId });
+
+            modelBuilder.Entity<PedidoPizza>()
+                .HasOne(pp => pp.Pedido)
+                .WithMany(p => p.PedidoPizzas) // Asegúrate de tener una propiedad adecuada en Pedidos
+                .HasForeignKey(pp => pp.PedidoId);
+
+            modelBuilder.Entity<PedidoPizza>()
+                .HasOne(pp => pp.Pizza)
+                .WithMany(p => p.PedidoPizzas)
+                .HasForeignKey(pp => pp.PizzaId);
+
             modelBuilder.Entity<Pizza>().HasData(
-                new Pizza { Id = 1, Name = "Classic Italian", Price = 7.02m },
-                new Pizza { Id = 2, Name = "Vegetariana", Price = 6.77m },
-                new Pizza { Id = 3, Name = "Pepperoni", Price = 9.12m },
-                new Pizza { Id = 4, Name = "8 Quesos", Price = 10.50m }
+                new Pizza { Id = 1, Name = "Margherita", Price = 8.50m },
+                new Pizza { Id = 2, Name = "Hawaiana", Price = 9.99m },
+                new Pizza { Id = 3, Name = "Cuatro Estaciones", Price = 10.75m },
+                new Pizza { Id = 4, Name = "Barbacoa", Price = 11.25m },
+                new Pizza { Id = 5, Name = "Vegana", Price = 12.00m }
             );
+
             modelBuilder.Entity<Ingredientes>().HasData(
 
-                new Ingredientes { IdIngredient = 1, PizzaId = 1, NameIngredient = "Tomate", Price = 0.22m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 2, PizzaId = 1, NameIngredient = "Prosciutto", Price = 1.3m, IsGlutenFree = false },
-                new Ingredientes { IdIngredient = 3, PizzaId = 1, NameIngredient = "Queso Parmesano", Price = 2.5m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 4, PizzaId = 1, NameIngredient = "Aceite de Oliva", Price = 3.0m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 1, PizzaId = 1, NameIngredient = "Salsa de Tomate", Price = 0.5m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 2, PizzaId = 1, NameIngredient = "Queso Mozzarella", Price = 1.0m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 3, PizzaId = 1, NameIngredient = "Albahaca", Price = 0.3m, IsGlutenFree = true },
 
-                new Ingredientes { IdIngredient = 5, PizzaId = 2, NameIngredient = "Tomate", Price = 0.22m,IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 6, PizzaId = 2, NameIngredient = "Espinaca",Price = 0.3m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 7, PizzaId = 2, NameIngredient = "Champiñones", Price = 0.25m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 4, PizzaId = 2, NameIngredient = "Jamón", Price = 1.2m, IsGlutenFree = false },
+                new Ingredientes { IdIngredient = 5, PizzaId = 2, NameIngredient = "Piña", Price = 0.8m, IsGlutenFree = true },
 
-                new Ingredientes { IdIngredient = 8, PizzaId = 3, NameIngredient = "Tomate", Price = 0.22m,  IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 9, PizzaId = 3, NameIngredient = "Pepperoni", Price = 1.5m, IsGlutenFree = false },
-                new Ingredientes { IdIngredient = 10, PizzaId = 3, NameIngredient = "Oregano",Price = 0.1m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 6, PizzaId = 3, NameIngredient = "Hongos", Price = 0.6m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 7, PizzaId = 3, NameIngredient = "Alcachofas", Price = 0.7m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 8, PizzaId = 3, NameIngredient = "Aceitunas", Price = 0.5m, IsGlutenFree = true },
 
-                new Ingredientes { IdIngredient = 11, PizzaId = 4, NameIngredient = "Tomate", Price = 0.22m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 12, PizzaId = 4, NameIngredient = "Queso Mozzarella", Price = 2.0m,  IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 13, PizzaId = 4, NameIngredient = "Queso Cheddar", Price = 1.5m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 14, PizzaId = 4, NameIngredient = "Queso Gouda", Price = 1.8m,  IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 15, PizzaId = 4, NameIngredient = "Queso Brie" ,Price = 2.2m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 16, PizzaId = 4, NameIngredient = "Queso Roquefort",  Price = 3.5m, IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 17, PizzaId = 4, NameIngredient = "Queso Gruyere",  Price = 2.6m,  IsGlutenFree = true },
-                new Ingredientes { IdIngredient = 18, PizzaId = 4, NameIngredient = "Queso Emmental",  Price = 2.3m,  IsGlutenFree = true }
+                new Ingredientes { IdIngredient = 9, PizzaId = 4, NameIngredient = "Carne de Res", Price = 1.5m, IsGlutenFree = false },
+                new Ingredientes { IdIngredient = 10, PizzaId = 4, NameIngredient = "Salsa Barbacoa", Price = 0.9m, IsGlutenFree = true },
+
+                new Ingredientes { IdIngredient = 11, PizzaId = 5, NameIngredient = "Queso Vegano", Price = 2.0m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 12, PizzaId = 5, NameIngredient = "Pimiento", Price = 0.4m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 13, PizzaId = 5, NameIngredient = "Cebolla Morada", Price = 0.3m, IsGlutenFree = true },
+                new Ingredientes { IdIngredient = 14, PizzaId = 5, NameIngredient = "Calabacín", Price = 0.45m, IsGlutenFree = true }
+            );
+            
+            modelBuilder.Entity<Pedidos>().HasData(
+                new Pedidos { IdPedido = 1, Price = 100.00m },
+                new Pedidos { IdPedido = 2, Price = 150.00m }
+    );
+            modelBuilder.Entity<PedidoPizza>().HasData(
+
+                new PedidoPizza { PedidoId = 1, PizzaId = 1 },
+                new PedidoPizza { PedidoId = 1, PizzaId = 2 },
+                new PedidoPizza { PedidoId = 2, PizzaId = 1 }
             );
         }
     }

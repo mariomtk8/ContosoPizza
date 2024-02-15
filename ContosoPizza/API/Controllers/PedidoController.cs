@@ -28,21 +28,32 @@ namespace ContosoPizza.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Pedidos pedido)
+        public IActionResult Create([FromBody] Pedidos pedido)
         {
-            if (pedido.Pizzas != null && pedido.Pizzas.Count > 0)
+            _pedidosService.Add(pedido);
+            // Aquí se asume que el pedido ya contiene la propiedad IdPedido configurada correctamente después de agregarlo
+            return CreatedAtAction(nameof(Get), new { id = pedido.IdPedido }, pedido);
+        }
+
+        [HttpPost("{pedidoId}/AddPizzas")]
+        public IActionResult AddPizzas(int pedidoId, [FromBody] List<Pizza> pizzas)
+        {
+            var existingPedido = _pedidosService.Get(pedidoId);
+            if (existingPedido == null)
             {
-                pedido.Price = pedido.Pizzas.Sum(p => p.Price);
+                return NotFound();
             }
 
-            _pedidosService.Add(pedido);
-            return CreatedAtAction(nameof(Get), new { id = pedido.IdOrder }, pedido);
+            _pedidosService.AddPizzas(pedidoId, pizzas);
+
+            // No se retorna el pedido en sí para seguir las buenas prácticas de la API REST en operaciones POST
+            return NoContent();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Pedidos pedido)
+        public IActionResult Update(int id, [FromBody] Pedidos pedido)
         {
-            if (id != pedido.IdOrder)
+            if (id != pedido.IdPedido)
                 return BadRequest();
 
             var existingPedido = _pedidosService.Get(id);
@@ -73,6 +84,5 @@ namespace ContosoPizza.Controllers
             var pedidos = _pedidosService.GetAll();
             return Ok(pedidos);
         }
-
     }
 }

@@ -16,13 +16,13 @@ namespace ContosoPizza.Data.Migrations
                 name: "Pedidos",
                 columns: table => new
                 {
-                    IdOrder = table.Column<int>(type: "int", nullable: false)
+                    IdPedido = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pedidos", x => x.IdOrder);
+                    table.PrimaryKey("PK_Pedidos", x => x.IdPedido);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,17 +32,11 @@ namespace ContosoPizza.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PedidosIdOrder = table.Column<int>(type: "int", nullable: true)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pizzas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pizzas_Pedidos_PedidosIdOrder",
-                        column: x => x.PedidosIdOrder,
-                        principalTable: "Pedidos",
-                        principalColumn: "IdOrder");
                 });
 
             migrationBuilder.CreateTable(
@@ -67,15 +61,49 @@ namespace ContosoPizza.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PedidoPizza",
+                columns: table => new
+                {
+                    PedidoId = table.Column<int>(type: "int", nullable: false),
+                    PizzaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PedidoPizza", x => new { x.PedidoId, x.PizzaId });
+                    table.ForeignKey(
+                        name: "FK_PedidoPizza_Pedidos_PedidoId",
+                        column: x => x.PedidoId,
+                        principalTable: "Pedidos",
+                        principalColumn: "IdPedido",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PedidoPizza_Pizzas_PizzaId",
+                        column: x => x.PizzaId,
+                        principalTable: "Pizzas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
-                table: "Pizzas",
-                columns: new[] { "Id", "Name", "PedidosIdOrder", "Price" },
+                table: "Pedidos",
+                columns: new[] { "IdPedido", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Classic Italian", null, 7.02m },
-                    { 2, "Vegetariana", null, 6.77m },
-                    { 3, "Pepperoni", null, 9.12m },
-                    { 4, "8 Quesos", null, 10.50m }
+                    { 1, 100.00m },
+                    { 2, 150.00m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Pizzas",
+                columns: new[] { "Id", "Name", "Price" },
+                values: new object[,]
+                {
+                    { 1, "Margherita", 8.50m },
+                    { 2, "Hawaiana", 9.99m },
+                    { 3, "Cuatro Estaciones", 10.75m },
+                    { 4, "Barbacoa", 11.25m },
+                    { 5, "Vegana", 12.00m }
                 });
 
             migrationBuilder.InsertData(
@@ -83,24 +111,30 @@ namespace ContosoPizza.Data.Migrations
                 columns: new[] { "IdIngredient", "IsGlutenFree", "NameIngredient", "PizzaId", "Price" },
                 values: new object[,]
                 {
-                    { 1, true, "Tomate", 1, 0.22m },
-                    { 2, false, "Prosciutto", 1, 1.3m },
-                    { 3, true, "Queso Parmesano", 1, 2.5m },
-                    { 4, true, "Aceite de Oliva", 1, 3.0m },
-                    { 5, true, "Tomate", 2, 0.22m },
-                    { 6, true, "Espinaca", 2, 0.3m },
-                    { 7, true, "Champiñones", 2, 0.25m },
-                    { 8, true, "Tomate", 3, 0.22m },
-                    { 9, false, "Pepperoni", 3, 1.5m },
-                    { 10, true, "Oregano", 3, 0.1m },
-                    { 11, true, "Tomate", 4, 0.22m },
-                    { 12, true, "Queso Mozzarella", 4, 2.0m },
-                    { 13, true, "Queso Cheddar", 4, 1.5m },
-                    { 14, true, "Queso Gouda", 4, 1.8m },
-                    { 15, true, "Queso Brie", 4, 2.2m },
-                    { 16, true, "Queso Roquefort", 4, 3.5m },
-                    { 17, true, "Queso Gruyere", 4, 2.6m },
-                    { 18, true, "Queso Emmental", 4, 2.3m }
+                    { 1, true, "Salsa de Tomate", 1, 0.5m },
+                    { 2, true, "Queso Mozzarella", 1, 1.0m },
+                    { 3, true, "Albahaca", 1, 0.3m },
+                    { 4, false, "Jamón", 2, 1.2m },
+                    { 5, true, "Piña", 2, 0.8m },
+                    { 6, true, "Hongos", 3, 0.6m },
+                    { 7, true, "Alcachofas", 3, 0.7m },
+                    { 8, true, "Aceitunas", 3, 0.5m },
+                    { 9, false, "Carne de Res", 4, 1.5m },
+                    { 10, true, "Salsa Barbacoa", 4, 0.9m },
+                    { 11, true, "Queso Vegano", 5, 2.0m },
+                    { 12, true, "Pimiento", 5, 0.4m },
+                    { 13, true, "Cebolla Morada", 5, 0.3m },
+                    { 14, true, "Calabacín", 5, 0.45m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PedidoPizza",
+                columns: new[] { "PedidoId", "PizzaId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 1, 2 },
+                    { 2, 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -109,9 +143,9 @@ namespace ContosoPizza.Data.Migrations
                 column: "PizzaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pizzas_PedidosIdOrder",
-                table: "Pizzas",
-                column: "PedidosIdOrder");
+                name: "IX_PedidoPizza_PizzaId",
+                table: "PedidoPizza",
+                column: "PizzaId");
         }
 
         /// <inheritdoc />
@@ -121,10 +155,13 @@ namespace ContosoPizza.Data.Migrations
                 name: "Ingredientes");
 
             migrationBuilder.DropTable(
-                name: "Pizzas");
+                name: "PedidoPizza");
 
             migrationBuilder.DropTable(
                 name: "Pedidos");
+
+            migrationBuilder.DropTable(
+                name: "Pizzas");
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Dynamic;
 using ContosoPizza.Models;
 
-namespace TetePizza.Services
+namespace ContosoPizza.Services
 {
     public interface IPizzaServices
     {
